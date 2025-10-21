@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="yardim-teslim-raporu" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="30" bottomMargin="30">
+    
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+    
+    <!-- Parametreler -->
+    <parameter name="muracaatNo" class="java.lang.String"/>
+    <parameter name="muracaatTarihi" class="java.lang.String"/>
+    <parameter name="mernisNo" class="java.lang.String"/>
+    <parameter name="adSoyad" class="java.lang.String"/>
+    <parameter name="adres" class="java.lang.String"/>
+    <parameter name="kararSayisi" class="java.lang.String"/>
+    <parameter name="kararTarihi" class="java.lang.String"/>
+    <parameter name="toplantiTarihi" class="java.lang.String"/>
+    
+    <!-- Alan tanımları -->
+    <field name="tip" class="java.lang.String"/>
+    <field name="yardimAdi" class="java.lang.String"/>
+    <field name="durumu" class="java.lang.String"/>
+    <field name="aciklama" class="java.lang.String"/>
+    <field name="tutari" class="java.math.BigDecimal"/>
+    <field name="yardimSayisi" class="java.lang.Integer"/>
+    <field name="yardimDonemi" class="java.lang.String"/>
+    <field name="yardimDilimi" class="java.lang.String"/>
+    
+    <!-- Baslik -->
+    <title>
+        <band height="285" splitType="Stretch">
+            <!-- Sol Logo (Gebze Belediyesi) -->
+            <image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
+                <reportElement x="0" y="0" width="80" height="80"/>
+                <imageExpression><![CDATA["static/images/gebze-belediyesi-logo.png"]]></imageExpression>
+            </image>
+            
+            <!-- T.C. -->
+            <staticText>
+                <reportElement x="0" y="10" width="515" height="15"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="11" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[T.C.]]></text>
+            </staticText>
+            
+            <!-- GEBZE BELEDIYE BAŞKANLIGI -->
+            <staticText>
+                <reportElement x="0" y="27" width="515" height="18"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="13" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[GEBZE BELEDİYE BAŞKANLIĞI]]></text>
+            </staticText>
+            
+            <!-- Sosyal Destek Hizmetleri Mudurlugu -->
+            <staticText>
+                <reportElement x="0" y="47" width="515" height="16"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="11" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[Sosyal Destek Hizmetleri Müdürlüğü]]></text>
+            </staticText>
+            
+            <!-- Yardim Teslim Tutana -->
+            <staticText>
+                <reportElement x="0" y="65" width="515" height="20"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="11" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[Yardım Teslim Tutanağı]]></text>
+            </staticText>
+            
+            <!-- BAVURU BiLGiLERi Basligi -->
+           <staticText>
+    <reportElement x="0" y="95" width="515" height="20"/>
+    <textElement textAlignment="Center" verticalAlignment="Middle">
+        <font fontName="DejaVu Sans" size="10" isBold="true"
+              pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+    </textElement>
+    <text><![CDATA[BAŞVURU BİLGİLERİ]]></text>
+</staticText>
+
+            <!-- Muracaat No -->
+            <staticText>
+                <reportElement x="0" y="115" width="120" height="15"/>
+                <textElement verticalAlignment="Middle" textAlignment="Left">
+                    <font fontName="DejaVu Sans" size="9" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[Müracaat No]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="120" y="115" width="10" height="15"/>
+                <textElement verticalAlignment="Middle" textAlignment="Center">
+                    <font fontName="DejaVu Sans" size="9" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[:]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="135" y="115" width="380" height="15"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="9" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{muracaatNo}]]></textFieldExpression>
+            </textField>
+            
+            <!-- Muracaat Tarihi -->
+            <staticText>
+                <reportElement x="0" y="132" width="120" height="15"/>
+                <textElement verticalAlignment="Middle" textAlignment="Left">
+                    <font fontName="DejaVu Sans" size="9" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[Müracaat Tarihi]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="120" y="132" width="10" height="15"/>
+                <textElement verticalAlignment="Middle" textAlignment="Center">
+                    <font fontName="DejaVu Sans" size="9" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[:]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="135" y="132" width="380" height="15"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="9" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{muracaatTarihi}]]></textFieldExpression>
+            </textField>
+            
+            <!-- Mernis No -->
+            <staticText>
+                <reportElement x="0" y="149" width="120" height="15"/>
+                <textElement verticalAlignment="Middle" textAlignment="Left">
+                    <font fontName="DejaVu Sans" size="9" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[Mernis No]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="120" y="149" width="10" height="15"/>
+                <textElement verticalAlignment="Middle" textAlignment="Center">
+                    <font fontName="DejaVu Sans" size="9" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[:]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="135" y="149" width="380" height="15"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="9" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{mernisNo}]]></textFieldExpression>
+            </textField>
+            
+            <!-- Ad Soyad -->
+            <staticText>
+                <reportElement x="0" y="166" width="120" height="15"/>
+                <textElement verticalAlignment="Middle" textAlignment="Left">
+                    <font fontName="DejaVu Sans" size="9" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[Ad Soyad]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="120" y="166" width="10" height="15"/>
+                <textElement verticalAlignment="Middle" textAlignment="Center">
+                    <font fontName="DejaVu Sans" size="9" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[:]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="135" y="166" width="380" height="15"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="9" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{adSoyad}]]></textFieldExpression>
+            </textField>
+            
+            <!-- Adres -->
+            <staticText>
+                <reportElement x="0" y="183" width="120" height="15"/>
+                <textElement verticalAlignment="Middle" textAlignment="Left">
+                    <font fontName="DejaVu Sans" size="9" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[Adres]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="120" y="183" width="10" height="15"/>
+                <textElement verticalAlignment="Middle" textAlignment="Center">
+                    <font fontName="DejaVu Sans" size="9" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[:]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true" isStretchWithOverflow="true">
+                <reportElement x="135" y="183" width="380" height="15"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="9" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{adres}]]></textFieldExpression>
+            </textField>
+            
+            <!-- YARDIM TESLM BLGLER Basligi -->
+           <staticText>
+    <reportElement x="0" y="207" width="515" height="20"/>
+    <textElement textAlignment="Center" verticalAlignment="Middle">
+        <font fontName="DejaVu Sans" size="10" isBold="true"
+              pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+    </textElement>
+    <text><![CDATA[YARDIM TESLİM BİLGİLERİ]]></text>
+</staticText>
+
+            
+            <!-- Karar Sayisi -->
+            <staticText>
+                <reportElement x="0" y="227" width="120" height="15"/>
+                <textElement verticalAlignment="Middle" textAlignment="Left">
+                    <font fontName="DejaVu Sans" size="9" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[Karar Sayısı]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="120" y="227" width="10" height="15"/>
+                <textElement verticalAlignment="Middle" textAlignment="Center">
+                    <font fontName="DejaVu Sans" size="9" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[:]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="135" y="227" width="380" height="15"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="9" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{kararSayisi}]]></textFieldExpression>
+            </textField>
+            
+            <!-- Karar Tarihi -->
+            <staticText>
+                <reportElement x="0" y="244" width="120" height="15"/>
+                <textElement verticalAlignment="Middle" textAlignment="Left">
+                    <font fontName="DejaVu Sans" size="9" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[Karar Tarihi]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="120" y="244" width="10" height="15"/>
+                <textElement verticalAlignment="Middle" textAlignment="Center">
+                    <font fontName="DejaVu Sans" size="9" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[:]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="135" y="244" width="380" height="15"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="9" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{kararTarihi}]]></textFieldExpression>
+            </textField>
+            
+            <!-- Toplanti Tarihi -->
+            <staticText>
+                <reportElement x="0" y="261" width="120" height="15"/>
+                <textElement verticalAlignment="Middle" textAlignment="Left">
+                    <font fontName="DejaVu Sans" size="9" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[Toplantı Tarihi]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="120" y="261" width="10" height="15"/>
+                <textElement verticalAlignment="Middle" textAlignment="Center">
+                    <font fontName="DejaVu Sans" size="9" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[:]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="135" y="261" width="380" height="15"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="9" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{toplantiTarihi} != null && !$P{toplantiTarihi}.isEmpty() ? $P{toplantiTarihi} : "-"]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    
+    <!-- Page Header - Verilen Yardım Bilgileri Basligi -->
+    <pageHeader>
+        <band height="25" splitType="Stretch">
+            <staticText>
+    <reportElement x="0" y="0" width="515" height="20"/>
+    <textElement textAlignment="Center" verticalAlignment="Middle">
+        <font fontName="DejaVu Sans" size="11" isBold="true"
+              pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+    </textElement>
+    <text><![CDATA[VERİLEN YARDIM BİLGİLERİ]]></text>
+</staticText>
+
+
+        </band>
+    </pageHeader>
+    
+    <!-- Detay Basligi -->
+  <columnHeader>
+    <band height="25" splitType="Stretch">
+
+        <!-- TİPİ -->
+        <staticText>
+            <reportElement x="0" y="0" width="50" height="25"/>
+            <box>
+                <pen lineWidth="0.5"/>
+            </box>
+            <textElement textAlignment="Center" verticalAlignment="Middle">
+                <font fontName="DejaVu Sans" size="8" isBold="true"
+                      pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+            </textElement>
+            <text><![CDATA[TİPİ]]></text>
+        </staticText>
+
+        <!-- YARDIM ADI -->
+        <staticText>
+            <reportElement x="50" y="0" width="85" height="25"/>
+            <box>
+                <pen lineWidth="0.5"/>
+            </box>
+            <textElement textAlignment="Center" verticalAlignment="Middle">
+                <font fontName="DejaVu Sans" size="8" isBold="true"
+                      pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+            </textElement>
+            <text><![CDATA[YARDIM ADI]]></text>
+        </staticText>
+
+        <!-- DURUMU -->
+        <staticText>
+            <reportElement x="135" y="0" width="60" height="25"/>
+            <box>
+                <pen lineWidth="0.5"/>
+            </box>
+            <textElement textAlignment="Center" verticalAlignment="Middle">
+                <font fontName="DejaVu Sans" size="8" isBold="true"
+                      pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+            </textElement>
+            <text><![CDATA[DURUMU]]></text>
+        </staticText>
+
+        <!-- AÇIKLAMA -->
+        <staticText>
+            <reportElement x="195" y="0" width="85" height="25"/>
+            <box>
+                <pen lineWidth="0.5"/>
+            </box>
+            <textElement textAlignment="Center" verticalAlignment="Middle">
+                <font fontName="DejaVu Sans" size="8" isBold="true"
+                      pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+            </textElement>
+            <text><![CDATA[AÇIKLAMA]]></text>
+        </staticText>
+
+        <!-- YARDIM TUTARI -->
+        <staticText>
+            <reportElement x="280" y="0" width="65" height="25"/>
+            <box>
+                <pen lineWidth="0.5"/>
+            </box>
+            <textElement textAlignment="Center" verticalAlignment="Middle">
+                <font fontName="DejaVu Sans" size="8" isBold="true"
+                      pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+            </textElement>
+            <text><![CDATA[YARDIM TUTARI]]></text>
+        </staticText>
+
+        <!-- YARDIM SAYISI -->
+        <staticText>
+            <reportElement x="345" y="0" width="55" height="25"/>
+            <box>
+                <pen lineWidth="0.5"/>
+            </box>
+            <textElement textAlignment="Center" verticalAlignment="Middle">
+                <font fontName="DejaVu Sans" size="8" isBold="true"
+                      pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+            </textElement>
+            <text><![CDATA[YARDIM SAYISI]]></text>
+        </staticText>
+
+        <!-- YARDIM DÖNEMİ -->
+        <staticText>
+            <reportElement x="400" y="0" width="57" height="25"/>
+            <box>
+                <pen lineWidth="0.5"/>
+            </box>
+            <textElement textAlignment="Center" verticalAlignment="Middle">
+                <font fontName="DejaVu Sans" size="7" isBold="true"
+                      pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+            </textElement>
+            <text><![CDATA[YARDIM DÖNEMİ]]></text>
+        </staticText>
+
+        <!-- YARDIM DİLİMİ -->
+        <staticText>
+            <reportElement x="457" y="0" width="58" height="25"/>
+            <box>
+                <pen lineWidth="0.5"/>
+            </box>
+            <textElement textAlignment="Center" verticalAlignment="Middle">
+                <font fontName="DejaVu Sans" size="7" isBold="true"
+                      pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+            </textElement>
+            <text><![CDATA[YARDIM DİLİMİ]]></text>
+        </staticText>
+
+    </band>
+</columnHeader>
+
+    
+    <!-- Detay -->
+    <detail>
+        <band height="20" splitType="Stretch">
+            <!-- TİPİ -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="0" y="0" width="50" height="20"/>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{tip}]]></textFieldExpression>
+            </textField>
+            
+            <!-- YARDIM ADI -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="50" y="0" width="85" height="20"/>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{yardimAdi}]]></textFieldExpression>
+            </textField>
+            
+            <!-- DURUMU -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="135" y="0" width="60" height="20"/>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{durumu}]]></textFieldExpression>
+            </textField>
+            
+            <!-- AÇIKLAMA -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="195" y="0" width="85" height="20"/>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{aciklama}]]></textFieldExpression>
+            </textField>
+            
+            <!-- YARDIM TUTARI -->
+            <textField pattern="#,##0.00" isBlankWhenNull="true">
+                <reportElement x="280" y="0" width="65" height="20"/>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{tutari}]]></textFieldExpression>
+            </textField>
+            
+            <!-- YARDIM SAYISI -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="345" y="0" width="55" height="20"/>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{yardimSayisi}]]></textFieldExpression>
+            </textField>
+            
+            <!-- YARDIM DONEMI -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="400" y="0" width="57" height="20"/>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{yardimDonemi}]]></textFieldExpression>
+            </textField>
+            
+            <!-- YARDIM DILIMI -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="457" y="0" width="58" height="20"/>
+                <box>
+                    <pen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{yardimDilimi}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    
+    <!-- Sayfa Altligi -->
+    <pageFooter>
+        <band height="100" splitType="Stretch">
+            <!-- Teslim Alan -->
+            <staticText>
+                <reportElement x="150" y="20" width="257" height="15"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="9" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <text><![CDATA[Teslim Alan İmza]]></text>
+            </staticText>
+            
+            <line>
+                <reportElement x="200" y="55" width="157" height="1"/>
+            </line>
+            
+            <textField isBlankWhenNull="true">
+                <reportElement x="150" y="60" width="257" height="12"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{mernisNo}]]></textFieldExpression>
+            </textField>
+            
+            <textField isBlankWhenNull="true">
+                <reportElement x="150" y="73" width="257" height="12"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="DejaVu Sans" size="8" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{adSoyad}]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+    
+</jasperReport>

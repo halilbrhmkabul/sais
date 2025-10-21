@@ -1,0 +1,698 @@
+/**
+ * Component Styles - Form elemanları ve bileşenler
+ */
+
+/* Cards */
+.card {
+    background: var(--surface-color);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.card-header {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.card-body {
+    padding: 0.75rem 0;
+}
+
+.card-footer {
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+/* Buttons - PrimeFaces override - Kurumsal Görünüm */
+.ui-button {
+    border-radius: var(--radius-md) !important;
+    padding: 0.5rem 1rem !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    transition: all var(--transition-fast) !important;
+    border: none !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.ui-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.ui-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.ui-button.ui-button-success {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%) !important;
+    border-color: #4CAF50 !important;
+}
+
+.ui-button.ui-button-success:hover {
+    background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%) !important;
+}
+
+.ui-button.ui-button-warning {
+    background: linear-gradient(135deg, #FF9800 0%, #f57c00 100%) !important;
+    border-color: #FF9800 !important;
+}
+
+.ui-button.ui-button-warning:hover {
+    background: linear-gradient(135deg, #f57c00 0%, #e65100 100%) !important;
+}
+
+.ui-button.ui-button-danger {
+    background: linear-gradient(135deg, #F44336 0%, #e53935 100%) !important;
+    border-color: #F44336 !important;
+}
+
+.ui-button.ui-button-danger:hover {
+    background: linear-gradient(135deg, #e53935 0%, #d32f2f 100%) !important;
+}
+
+.ui-button.ui-button-info {
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%) !important;
+    border-color: #2196F3 !important;
+}
+
+.ui-button.ui-button-info:hover {
+    background: linear-gradient(135deg, #1976D2 0%, #1565C0 100%) !important;
+}
+
+/* Input Fields - Kurumsal Görünüm */
+.ui-inputfield {
+    border-radius: var(--radius-sm) !important;
+    border: 1px solid #d0d5dd !important;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.875rem !important;
+    transition: all var(--transition-fast) !important;
+    background: white !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.ui-inputfield:hover {
+    border-color: #b0b5bd !important;
+}
+
+.ui-inputfield:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+    outline: none !important;
+}
+
+.ui-inputfield:disabled {
+    background: #f5f5f5 !important;
+    color: #999 !important;
+    cursor: not-allowed !important;
+    box-shadow: none !important;
+}
+
+/* Textarea Tutarlılığı */
+.ui-inputtextarea {
+    border-radius: var(--radius-sm) !important;
+    border: 1px solid #d0d5dd !important;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.875rem !important;
+    transition: all var(--transition-fast) !important;
+    background: white !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+    resize: vertical !important;
+}
+
+.ui-inputtextarea:hover {
+    border-color: #b0b5bd !important;
+}
+
+.ui-inputtextarea:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+    outline: none !important;
+}
+
+/* Checkbox Tutarlılığı */
+.ui-chkbox-box {
+    border: 2px solid #d0d5dd !important;
+    border-radius: var(--radius-sm) !important;
+    width: 20px !important;
+    height: 20px !important;
+    transition: all var(--transition-fast) !important;
+    background: white !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.ui-chkbox-box:hover {
+    border-color: var(--primary-color) !important;
+}
+
+.ui-chkbox-box.ui-state-active {
+    background: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.ui-chkbox-box.ui-state-active .ui-chkbox-icon {
+    color: white !important;
+}
+
+/* Panel */
+.ui-panel {
+    border-radius: var(--radius-lg) !important;
+    border: none !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.ui-panel-titlebar {
+    background: var(--surface-color) !important;
+    border-bottom: 2px solid var(--primary-color) !important;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
+    padding: 0.75rem 1rem !important;
+}
+
+.ui-panel-title {
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+}
+
+.ui-panel-content {
+    padding: 1rem !important;
+}
+
+/* DataTable - Kurumsal Görünüm */
+.ui-datatable {
+    border-radius: var(--radius-lg) !important;
+    overflow: hidden;
+    font-size: 0.875rem !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.ui-datatable thead th {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%) !important;
+    color: white !important;
+    padding: 0.75rem 0.875rem !important;
+    font-weight: 700 !important;
+    font-size: 0.8rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border: none !important;
+}
+
+.ui-datatable tbody td {
+    padding: 0.75rem 0.875rem !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    transition: all var(--transition-fast) !important;
+}
+
+.ui-datatable tbody tr {
+    transition: all var(--transition-fast) !important;
+}
+
+.ui-datatable tbody tr:hover {
+    background: #f8f9fa !important;
+    box-shadow: inset 0 0 0 1px var(--primary-light) !important;
+}
+
+.ui-datatable tbody tr:nth-child(even) {
+    background: #fafbfc !important;
+}
+
+.ui-datatable tbody tr:nth-child(even):hover {
+    background: #f5f7fa !important;
+}
+
+/* TabView */
+.ui-tabs {
+    border: none !important;
+}
+
+.ui-tabs .ui-tabs-nav {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid var(--border-color) !important;
+}
+
+.ui-tabs .ui-tabs-nav li {
+    margin-right: var(--spacing-sm) !important;
+    border: none !important;
+}
+
+.ui-tabs .ui-tabs-nav li a {
+    padding: var(--spacing-md) var(--spacing-lg) !important;
+    border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
+    transition: all var(--transition-fast) !important;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-state-active a {
+    background: var(--primary-color) !important;
+    color: white !important;
+}
+
+.ui-tabs .ui-tabs-panels {
+    border: none !important;
+    padding: var(--spacing-lg) !important;
+    background: var(--surface-color) !important;
+    border-radius: 0 var(--radius-lg) var(--radius-lg) var(--radius-lg) !important;
+}
+
+/* Messages */
+.ui-messages {
+    border-radius: var(--radius-md) !important;
+    margin-bottom: var(--spacing-lg) !important;
+}
+
+.ui-growl {
+    top: 80px !important;
+    right: var(--spacing-lg) !important;
+}
+
+.ui-growl-item {
+    border-radius: var(--radius-md) !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+/* Form Grid - Responsive */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    min-width: 0; /* Grid overflow fix */
+}
+
+.form-field label {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.form-field .required::after {
+    content: ' *';
+    color: var(--error-color);
+    font-weight: 700;
+}
+
+.form-field small {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.3;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-field {
+        gap: var(--spacing-xs);
+    }
+    
+    /* Flexbox içindeki elementlerin wrap olmasını sağla */
+    .form-field > div[style*="flex"] {
+        flex-wrap: wrap !important;
+    }
+}
+
+/* Stats Cards - Responsive */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.stat-card {
+    background: var(--surface-color);
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border-left: 4px solid var(--primary-color);
+    transition: all var(--transition-fast);
+    border: 1px solid var(--border-color);
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.stat-card.success {
+    border-left-color: var(--success-color);
+}
+
+.stat-card.warning {
+    border-left-color: var(--warning-color);
+}
+
+.stat-card.error {
+    border-left-color: var(--error-color);
+}
+
+.stat-title {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 700;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat-icon {
+    font-size: 32px;
+    opacity: 0.25;
+}
+
+/* Toolbar Styles - Kurumsal Görünüm */
+.ui-toolbar {
+    background: var(--surface-color) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 0.75rem 1rem !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.ui-toolbar .ui-toolbar-group-left,
+.ui-toolbar .ui-toolbar-group-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Panel Improvements */
+.ui-panel {
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow-sm) !important;
+    border-radius: var(--radius-md) !important;
+}
+
+.ui-panel .ui-panel-titlebar {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%) !important;
+    color: white !important;
+    border: none !important;
+    padding: 0.75rem 1rem !important;
+    font-weight: 600 !important;
+    border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
+}
+
+.ui-panel .ui-panel-content {
+    background: var(--surface-color) !important;
+    border: none !important;
+    padding: 1.25rem !important;
+}
+
+/* TabView - Kurumsal Görünüm */
+.ui-tabview {
+    background: transparent !important;
+    border: none !important;
+}
+
+.ui-tabview .ui-tabview-nav {
+    background: var(--surface-color) !important;
+    border: 1px solid var(--border-color) !important;
+    border-bottom: 3px solid var(--primary-color) !important;
+    border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
+    padding: 0.5rem 0.75rem 0 0.75rem !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.ui-tabview .ui-tabview-nav li {
+    background: transparent !important;
+    border: none !important;
+    margin-right: 0.25rem !important;
+    border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
+    transition: all var(--transition-fast) !important;
+}
+
+.ui-tabview .ui-tabview-nav li a {
+    background: #f8f9fa !important;
+    border: 1px solid var(--border-color) !important;
+    border-bottom: none !important;
+    color: var(--text-secondary) !important;
+    padding: 0.75rem 1.25rem !important;
+    border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    transition: all var(--transition-fast) !important;
+}
+
+.ui-tabview .ui-tabview-nav li a:hover {
+    background: #e9ecef !important;
+    color: var(--primary-color) !important;
+    border-color: var(--primary-light) !important;
+}
+
+.ui-tabview .ui-tabview-nav li.ui-state-active a {
+    background: var(--surface-color) !important;
+    color: var(--primary-color) !important;
+    border: 1px solid var(--border-color) !important;
+    border-bottom: 3px solid var(--primary-color) !important;
+    font-weight: 700 !important;
+    box-shadow: 0 -2px 8px rgba(33, 150, 243, 0.15) !important;
+}
+
+.ui-tabview .ui-tabview-nav li.ui-state-disabled a {
+    background: #f5f5f5 !important;
+    color: #bdbdbd !important;
+    cursor: not-allowed !important;
+    opacity: 0.6 !important;
+}
+
+.ui-tabview .ui-tabview-panels {
+    background: var(--surface-color) !important;
+    border: 1px solid var(--border-color) !important;
+    border-top: none !important;
+    border-radius: 0 0 var(--radius-md) var(--radius-md) !important;
+    padding: 1.5rem !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+.ui-tabview .ui-tabview-panel {
+    padding: 0 !important;
+}
+
+/* Tab İkonları */
+.ui-tabview .ui-tabview-nav li a .pi,
+.ui-tabview .ui-tabview-nav li a .fas,
+.ui-tabview .ui-tabview-nav li a .far {
+    margin-right: 0.5rem !important;
+    font-size: 0.875rem !important;
+}
+
+/* Dialog - Kurumsal Görünüm */
+.ui-dialog {
+    border-radius: var(--radius-lg) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%) !important;
+    color: white !important;
+    border: none !important;
+    padding: 1rem 1.25rem !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
+}
+
+.ui-dialog .ui-dialog-titlebar .ui-dialog-title {
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+}
+
+.ui-dialog .ui-dialog-titlebar-icon {
+    color: white !important;
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    margin-top: -0.75rem !important;
+}
+
+.ui-dialog .ui-dialog-titlebar-icon:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-radius: var(--radius-sm) !important;
+}
+
+.ui-dialog .ui-dialog-content {
+    background: var(--surface-color) !important;
+    padding: 1.5rem !important;
+}
+
+/* Calendar - Kurumsal Görünüm */
+.ui-datepicker {
+    border: 1px solid #d0d5dd !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    border-radius: var(--radius-md) !important;
+}
+
+.ui-datepicker .ui-datepicker-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%) !important;
+    color: white !important;
+    font-weight: 700 !important;
+    border: none !important;
+    border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
+    padding: 0.75rem !important;
+}
+
+.ui-datepicker .ui-datepicker-calendar td a {
+    border-radius: 50% !important;
+    transition: all var(--transition-fast) !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    line-height: 2rem !important;
+}
+
+.ui-datepicker .ui-datepicker-calendar td a:hover {
+    background: var(--primary-light) !important;
+    color: var(--primary-dark) !important;
+    transform: scale(1.1) !important;
+}
+
+.ui-datepicker .ui-datepicker-calendar td a.ui-state-active {
+    background: var(--primary-color) !important;
+    color: white !important;
+    font-weight: 700 !important;
+}
+
+/* SelectOneMenu - Dropdown */
+.ui-selectonemenu {
+    border: 1px solid #d0d5dd !important;
+    border-radius: var(--radius-sm) !important;
+    transition: all var(--transition-fast) !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+    background: white !important;
+}
+
+.ui-selectonemenu:hover {
+    border-color: #b0b5bd !important;
+}
+
+.ui-selectonemenu.ui-state-focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.ui-selectonemenu-label {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.875rem !important;
+}
+
+.ui-selectonemenu-trigger {
+    background: #f8f9fa !important;
+    border-left: 1px solid #d0d5dd !important;
+}
+
+/* File Upload - Tutarlılık */
+.ui-fileupload-choose {
+    border: 1px solid #d0d5dd !important;
+    border-radius: var(--radius-sm) !important;
+    padding: 0.5rem 1rem !important;
+    background: var(--primary-color) !important;
+    color: white !important;
+    transition: all var(--transition-fast) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.ui-fileupload-choose:hover {
+    background: var(--primary-dark) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.ui-fileupload-choose .ui-button-text {
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+.ui-fileupload {
+    border: 2px dashed #d0d5dd !important;
+    border-radius: var(--radius-md) !important;
+    background: #fafbfc !important;
+}
+
+.ui-fileupload-content {
+    background: white !important;
+    border: none !important;
+}
+
+/* Messages & Growl */
+.ui-messages,
+.ui-growl-item {
+    border-radius: var(--radius-md) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+.ui-messages-info,
+.ui-growl-item.ui-growl-message-info {
+    border-left: 4px solid var(--info-color) !important;
+}
+
+.ui-messages-success,
+.ui-growl-item.ui-growl-message-success {
+    border-left: 4px solid var(--success-color) !important;
+}
+
+.ui-messages-warn,
+.ui-growl-item.ui-growl-message-warn {
+    border-left: 4px solid var(--warning-color) !important;
+}
+
+.ui-messages-error,
+.ui-growl-item.ui-growl-message-error {
+    border-left: 4px solid var(--error-color) !important;
+}
+
+/* Badge - Kurumsal Görünüm */
+.ui-badge {
+    border-radius: 12px !important;
+    padding: 0.25rem 0.75rem !important;
+    font-weight: 700 !important;
+    font-size: 0.75rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
