@@ -45,9 +45,9 @@ spring:
   
   sql:
     init:
-      mode: always  
-      data-locations: classpath:database/master-data.sql  
-      continue-on-error: false  
+      mode: always
+      data-locations: classpath:database/master-data.sql
+      continue-on-error: true
       encoding: UTF-8
     
   web:
