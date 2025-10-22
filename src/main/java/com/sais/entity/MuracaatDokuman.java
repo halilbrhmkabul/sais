@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 public class MuracaatDokuman extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

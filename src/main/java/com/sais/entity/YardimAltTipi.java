@@ -14,7 +14,7 @@ import lombok.*;
 public class YardimAltTipi extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "kod", unique = true, length = 20)

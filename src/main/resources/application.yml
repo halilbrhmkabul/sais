@@ -26,17 +26,17 @@ spring:
       file-size-threshold: 2KB
     
   datasource:
-    url: jdbc:mysql://localhost:3306/sais_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Europe/Istanbul
-    username: root
-    password: 12345
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    
+    url: jdbc:oracle:thin:@localhost:1521:XE
+    username: sais_db
+    password: 123456
+    driver-class-name: oracle.jdbc.OracleDriver
+
   jpa:
     hibernate:
       ddl-auto: create
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
+        dialect: org.hibernate.dialect.OracleDialect
         format_sql: true
         jdbc:
           charset: UTF-8
