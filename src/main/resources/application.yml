@@ -27,7 +27,7 @@ spring:
     
   datasource:
     url: jdbc:oracle:thin:@localhost:1521:XE
-    username: sais_db
+    username: system
     password: 123456
     driver-class-name: oracle.jdbc.OracleDriver
 
