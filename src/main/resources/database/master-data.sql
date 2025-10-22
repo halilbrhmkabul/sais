@@ -6,6 +6,152 @@
 -- NOT: Bu script sadece ilk kez çalıştırılmalıdır (ddl-auto=create ile)
 -- =========================================================================
 
+-- SEQUENCE'LERİ OLUŞTUR
+-- =========================================================================
+-- Not: Hibernate bu sequence'leri otomatik oluşturur ancak SQL init timing
+-- sorunlarından dolayı burada manuel olarak oluşturuyoruz.
+-- =========================================================================
+
+BEGIN
+   EXECUTE IMMEDIATE 'CREATE SEQUENCE yakinlik_kodu_seq START WITH 1 INCREMENT BY 1';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -955 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'CREATE SEQUENCE meslek_seq START WITH 1 INCREMENT BY 1';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -955 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'CREATE SEQUENCE ozel_statu_seq START WITH 1 INCREMENT BY 1';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -955 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'CREATE SEQUENCE engelli_tipi_seq START WITH 1 INCREMENT BY 1';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -955 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'CREATE SEQUENCE hastalik_seq START WITH 1 INCREMENT BY 1';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -955 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'CREATE SEQUENCE gelir_turu_seq START WITH 1 INCREMENT BY 1';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -955 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'CREATE SEQUENCE borc_turu_seq START WITH 1 INCREMENT BY 1';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -955 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'CREATE SEQUENCE yardim_dilimi_seq START WITH 1 INCREMENT BY 1';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -955 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'CREATE SEQUENCE yardim_donemi_seq START WITH 1 INCREMENT BY 1';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -955 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'CREATE SEQUENCE yardim_red_sebebi_seq START WITH 1 INCREMENT BY 1';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -955 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'CREATE SEQUENCE yardim_alt_tipi_seq START WITH 1 INCREMENT BY 1';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -955 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'CREATE SEQUENCE personel_seq START WITH 1 INCREMENT BY 1';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -955 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'CREATE SEQUENCE kisi_seq START WITH 1 INCREMENT BY 1';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -955 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+BEGIN
+   EXECUTE IMMEDIATE 'CREATE SEQUENCE hesap_bilgisi_seq START WITH 1 INCREMENT BY 1';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -955 THEN
+         RAISE;
+      END IF;
+END;
+/
+
 -- 1. YAKINLIK KODLARI (MERNİS Standartları)
 -- =========================================================================
 INSERT INTO yakinlik_kodu (id, kod, adi, aciklama, sira_no, aktif, olusturma_tarihi, olusturan)
