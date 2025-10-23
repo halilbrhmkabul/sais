@@ -17,7 +17,7 @@ import java.util.List;
 public class AileMaddiDurum extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
