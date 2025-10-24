@@ -5,12 +5,13 @@
 -- Oracle 19c uyumlu versiyon - GenerationType.SEQUENCE ile uyumlu
 -- NOT: Bu script sadece ilk kez çalıştırılmalıdır (ddl-auto=create ile)
 -- =========================================================================
--- ID DEĞERLERİ HİBERNATE TARAFINDAN OTOMATIK OLUŞTURULACAK
--- Entity'lerde GenerationType.SEQUENCE kullanılıyor
+-- IMPORTANT: ID değerleri Hibernate tarafından OTOMATIK oluşturulacak!
+-- Entity'lerde @GeneratedValue(strategy = GenerationType.SEQUENCE) kullanılıyor
 -- Hibernate otomatik olarak sequence'ler oluşturacak ve ID'leri generate edecek
+-- Bu nedenle INSERT statement'larında ID kolonu BULUNMAMALIDIR!
 -- =========================================================================
 
--- 1. YAKINLIK KODLARI (MERNİS Standartları)
+-- 1. YAKINLIK KODLARI (MERNİS Standartları) - 12 kayıt
 -- =========================================================================
 INSERT INTO yakinlik_kodu (kod, adi, aciklama, sira_no, aktif, olusturma_tarihi, olusturan)
 VALUES ('01', 'Kendisi', 'Kendisi', 1, 1, SYSDATE, 'SYSTEM');
@@ -49,7 +50,7 @@ INSERT INTO yakinlik_kodu (kod, adi, aciklama, sira_no, aktif, olusturma_tarihi,
 VALUES ('12', 'Damat', 'Damat', 12, 1, SYSDATE, 'SYSTEM');
 
 
--- 2. MESLEK TANIMLARI
+-- 2. MESLEK TANIMLARI - 15 kayıt
 -- =========================================================================
 INSERT INTO meslek (kod, adi, aktif, olusturma_tarihi, olusturan)
 VALUES ('M001', 'İşsiz', 1, SYSDATE, 'SYSTEM');
@@ -97,7 +98,7 @@ INSERT INTO meslek (kod, adi, aktif, olusturma_tarihi, olusturan)
 VALUES ('M015', 'Güvenlik Görevlisi', 1, SYSDATE, 'SYSTEM');
 
 
--- 3. ÖZEL STATÜ TANIMLARI
+-- 3. ÖZEL STATÜ TANIMLARI - 7 kayıt
 -- =========================================================================
 INSERT INTO ozel_statu (kod, adi, aciklama, oncelik_puani, aktif, olusturma_tarihi, olusturan)
 VALUES ('OS001', 'Şehit Yakını', 'Şehit ailesi', 100, 1, SYSDATE, 'SYSTEM');
@@ -121,7 +122,7 @@ INSERT INTO ozel_statu (kod, adi, aciklama, oncelik_puani, aktif, olusturma_tari
 VALUES ('OS007', 'Mülteci', 'Geçici koruma statüsü', 50, 1, SYSDATE, 'SYSTEM');
 
 
--- 4. ENGELLİ TİPİ TANIMLARI (Ana Tipler + Alt Tipler)
+-- 4. ENGELLİ TİPİ TANIMLARI (Ana Tipler + Alt Tipler) - 17 kayıt
 -- =========================================================================
 -- Ana tipler (ust_tip_id NULL)
 INSERT INTO engelli_tipi (kod, adi, ust_tip_id, sira_no, aktif, olusturma_tarihi, olusturan)
@@ -176,8 +177,7 @@ VALUES ('ET005-01', 'Otizm', 16, 1, SYSDATE, 'SYSTEM');
 INSERT INTO engelli_tipi (kod, adi, sira_no, aktif, olusturma_tarihi, olusturan)
 VALUES ('ET005-02', 'Down Sendromu', 17, 1, SYSDATE, 'SYSTEM');
 
-
--- Alt tiplerin üst tiplerini bağlama
+-- Alt tiplerin üst tiplerini bağlama (Oracle uyumlu)
 UPDATE engelli_tipi
 SET ust_tip_id = (SELECT id FROM engelli_tipi WHERE kod = 'ET001' AND ROWNUM = 1)
 WHERE kod LIKE 'ET001-%';
@@ -199,7 +199,7 @@ SET ust_tip_id = (SELECT id FROM engelli_tipi WHERE kod = 'ET005' AND ROWNUM = 1
 WHERE kod LIKE 'ET005-%';
 
 
--- 5. HASTALIK TANIMLARI
+-- 5. HASTALIK TANIMLARI - 15 kayıt
 -- =========================================================================
 INSERT INTO hastalik (kod, adi, kronik, aktif, olusturma_tarihi, olusturan)
 VALUES ('H001', 'Şeker Hastalığı (Diyabet)', 1, 1, SYSDATE, 'SYSTEM');
@@ -247,7 +247,7 @@ INSERT INTO hastalik (kod, adi, kronik, aktif, olusturma_tarihi, olusturan)
 VALUES ('H015', 'Romatizma', 1, 1, SYSDATE, 'SYSTEM');
 
 
--- 6. GELİR TÜRÜ TANIMLARI
+-- 6. GELİR TÜRÜ TANIMLARI - 9 kayıt
 -- =========================================================================
 INSERT INTO gelir_turu (kod, adi, aciklama, sira_no, aktif, olusturma_tarihi, olusturan)
 VALUES ('GT001', 'Maaş', 'Aylık maaş geliri', 1, 1, SYSDATE, 'SYSTEM');
@@ -277,7 +277,7 @@ INSERT INTO gelir_turu (kod, adi, aciklama, sira_no, aktif, olusturma_tarihi, ol
 VALUES ('GT009', 'Diğer', 'Diğer gelir kaynakları', 9, 1, SYSDATE, 'SYSTEM');
 
 
--- 7. BORÇ TÜRÜ TANIMLARI
+-- 7. BORÇ TÜRÜ TANIMLARI - 11 kayıt
 -- =========================================================================
 INSERT INTO borc_turu (kod, adi, aciklama, sira_no, aktif, olusturma_tarihi, olusturan)
 VALUES ('BT001', 'Elektrik', 'Elektrik faturası', 1, 1, SYSDATE, 'SYSTEM');
@@ -313,7 +313,7 @@ INSERT INTO borc_turu (kod, adi, aciklama, sira_no, aktif, olusturma_tarihi, olu
 VALUES ('BT011', 'Diğer', 'Diğer borç/giderler', 11, 1, SYSDATE, 'SYSTEM');
 
 
--- 8. YARDIM DİLİMİ TANIMLARI
+-- 8. YARDIM DİLİMİ TANIMLARI - 4 kayıt
 -- =========================================================================
 INSERT INTO yardim_dilimi (kod, adi, sira_no, aktif, olusturma_tarihi, olusturan)
 VALUES ('D01', 'Birinci Dilim', 1, 1, SYSDATE, 'SYSTEM');
@@ -328,7 +328,7 @@ INSERT INTO yardim_dilimi (kod, adi, sira_no, aktif, olusturma_tarihi, olusturan
 VALUES ('D04', 'Dördüncü Dilim', 4, 1, SYSDATE, 'SYSTEM');
 
 
--- 9. YARDIM DÖNEMİ TANIMLARI (1-12 ay)
+-- 9. YARDIM DÖNEMİ TANIMLARI (1-12 ay) - 12 kayıt
 -- =========================================================================
 INSERT INTO yardim_donemi (adi, ay_sayisi, aktif, olusturma_tarihi, olusturan)
 VALUES ('1 Aylık', 1, 1, SYSDATE, 'SYSTEM');
@@ -367,7 +367,7 @@ INSERT INTO yardim_donemi (adi, ay_sayisi, aktif, olusturma_tarihi, olusturan)
 VALUES ('12 Aylık', 12, 1, SYSDATE, 'SYSTEM');
 
 
--- 10. YARDIM RED SEBEBİ TANIMLARI
+-- 10. YARDIM RED SEBEBİ TANIMLARI - 8 kayıt
 -- =========================================================================
 INSERT INTO yardim_red_sebebi (kod, adi, aciklama, sira_no, aktif, olusturma_tarihi, olusturan)
 VALUES ('RS001', 'Gelir Düzeyi Yüksek', 'Gelir seviyesi yardım almak için uygun değil', 1, 1, SYSDATE, 'SYSTEM');
@@ -394,7 +394,7 @@ INSERT INTO yardim_red_sebebi (kod, adi, aciklama, sira_no, aktif, olusturma_tar
 VALUES ('RS008', 'Diğer', 'Diğer sebepler', 8, 1, SYSDATE, 'SYSTEM');
 
 
--- 11. YARDIM ALT TİPİ TANIMLARI
+-- 11. YARDIM ALT TİPİ TANIMLARI - 17 kayıt
 -- =========================================================================
 -- Komisyonlu Nakdi Yardımlar
 INSERT INTO yardim_alt_tipi (kod, adi, komisyon_kararli, yardim_tipi, aciklama, birim, sira_no, aktif, olusturma_tarihi, olusturan)
@@ -451,7 +451,7 @@ INSERT INTO yardim_alt_tipi (kod, adi, komisyon_kararli, yardim_tipi, aciklama, 
 VALUES ('AYNI-K005', 'Ekmek Kuponu', 0, 'AYNI', 'Komisyonsuz ayni yardım - Günlük ekmek', 'Adet', 17, 1, SYSDATE, 'SYSTEM');
 
 
--- 12. PERSONEL KAYITLARI
+-- 12. PERSONEL KAYITLARI - 3 kayıt
 -- =========================================================================
 INSERT INTO personel (tc_kimlik_no, ad, soyad, telefon, email, unvan, departman, tahkikat_yetkili, komisyon_uyesi, aktif, olusturma_tarihi, olusturan)
 VALUES ('11111111110', 'Ahmet', 'YILMAZ', '5551234567', 'ahmet.yilmaz@gebze.bel.tr', 'Sosyal Yardım Uzmanı', 'Sosyal Hizmetler', 1, 0, 1, SYSDATE, 'SYSTEM');
@@ -463,9 +463,9 @@ INSERT INTO personel (tc_kimlik_no, ad, soyad, telefon, email, unvan, departman,
 VALUES ('33333333330', 'Mehmet', 'DEMİR', '5551112233', 'mehmet.demir@gebze.bel.tr', 'Müdür', 'Sosyal Hizmetler', 0, 1, 1, SYSDATE, 'SYSTEM');
 
 
--- 13. KİŞİ KAYITLARI
+-- 13. KİŞİ KAYITLARI - 15 kayıt
 -- =========================================================================
--- GEBZE İÇİ KİŞİLER
+-- GEBZE İÇİ KİŞİLER (10 kayıt)
 INSERT INTO kisi (tc_kimlik_no, ad, soyad, baba_adi, anne_adi, dogum_tarihi, dogum_yeri, cinsiyet, adres, il, ilce, telefon, gebze_ikameti, sgk_durum, ogrenim_durum, son_mernis_sorgu_tarihi, mernis_guncelleme_sayisi, aktif, olusturma_tarihi, olusturan)
 VALUES ('24151827460', 'Fatma', 'YILMAZ', 'Mehmet', 'Ayşe', TO_DATE('1985-03-15', 'YYYY-MM-DD'), 'İstanbul', 'K', 'Güzeller Mahallesi No:45 Gebze', 'Kocaeli', 'Gebze', '5551112233', 1, 'SSK', 'LISE', TRUNC(SYSDATE), 1, 1, SYSDATE, 'SYSTEM');
 
@@ -496,7 +496,7 @@ VALUES ('12345678920', 'Elif', 'DOĞAN', 'Hüseyin', 'Fatma', TO_DATE('1998-06-2
 INSERT INTO kisi (tc_kimlik_no, ad, soyad, baba_adi, anne_adi, dogum_tarihi, dogum_yeri, cinsiyet, adres, il, ilce, telefon, gebze_ikameti, sgk_durum, ogrenim_durum, son_mernis_sorgu_tarihi, mernis_guncelleme_sayisi, aktif, olusturma_tarihi, olusturan)
 VALUES ('23456789030', 'Hüseyin', 'KURT', 'Ali', 'Zeynep', TO_DATE('1975-08-14', 'YYYY-MM-DD'), 'Kocaeli', 'E', 'Hürriyet Mahallesi No:45 Gebze', 'Kocaeli', 'Gebze', '5550011122', 1, 'SSK', 'ORTAOKUL', TRUNC(SYSDATE), 1, 1, SYSDATE, 'SYSTEM');
 
--- GEBZE DIŞI KİŞİLER
+-- GEBZE DIŞI KİŞİLER (5 kayıt)
 INSERT INTO kisi (tc_kimlik_no, ad, soyad, baba_adi, anne_adi, dogum_tarihi, dogum_yeri, cinsiyet, adres, il, ilce, telefon, gebze_ikameti, sgk_durum, ogrenim_durum, son_mernis_sorgu_tarihi, mernis_guncelleme_sayisi, aktif, olusturma_tarihi, olusturan)
 VALUES ('98765432106', 'Emre', 'YILDIRIM', 'Mustafa', 'Ayşe', TO_DATE('1992-02-10', 'YYYY-MM-DD'), 'İstanbul', 'E', 'Kadıköy Mahallesi No:123', 'İstanbul', 'Kadıköy', '5551234321', 0, 'SSK', 'LISANS', TRUNC(SYSDATE), 1, 1, SYSDATE, 'SYSTEM');
 
@@ -513,9 +513,9 @@ INSERT INTO kisi (tc_kimlik_no, ad, soyad, baba_adi, anne_adi, dogum_tarihi, dog
 VALUES ('54321098766', 'Serkan', 'KAPLAN', 'İbrahim', 'Hatice', TO_DATE('1968-03-28', 'YYYY-MM-DD'), 'Antalya', 'E', 'Muratpaşa Mahallesi No:12', 'Antalya', 'Muratpaşa', '5555678765', 0, 'EMEKLI_SANDIGI', 'ILKOKUL', TRUNC(SYSDATE), 1, 1, SYSDATE, 'SYSTEM');
 
 
--- 14. HESAP BİLGİSİ (IBAN) KAYITLARI
+-- 14. HESAP BİLGİSİ (IBAN) KAYITLARI - 10 kayıt
 -- =========================================================================
--- NOT: kisi_id Hibernate tarafından otomatik atandığı için, kişi TC ile bulunacak
+-- NOT: kisi_id Hibernate tarafından otomatik atandığı için, TC ile JOIN yapılıyor
 INSERT INTO hesap_bilgisi (kisi_id, banka_adi, iban, hesap_sahibi_adi, varsayilan, aktif, olusturma_tarihi, olusturan)
 SELECT k.id, 'Ziraat Bankası', 'TR330006100519786457841326', 'Fatma YILMAZ', 1, 1, SYSDATE, 'SYSTEM'
 FROM kisi k WHERE k.tc_kimlik_no = '24151827460';
@@ -557,6 +557,27 @@ SELECT k.id, 'TEB', 'TR320003200015510000554433', 'Hüseyin KURT', 1, 1, SYSDATE
 FROM kisi k WHERE k.tc_kimlik_no = '23456789030';
 
 -- =========================================================================
--- VERİ YÜKLEME TAMAMLANDI
+-- VERİ YÜKLEME TAMAMLANDI - ORACLE 19c VERSİYONU
+-- =========================================================================
+-- Özet:
+-- ✅ 12 Yakınlık Kodu
+-- ✅ 15 Meslek
+-- ✅ 7 Özel Statü
+-- ✅ 17 Engelli Tipi (6 ana + 11 alt)
+-- ✅ 15 Hastalık
+-- ✅ 9 Gelir Türü
+-- ✅ 11 Borç Türü
+-- ✅ 4 Yardım Dilimi
+-- ✅ 12 Yardım Dönemi
+-- ✅ 8 Yardım Red Sebebi
+-- ✅ 17 Yardım Alt Tipi (6 Nakdi + 6 Ayni Komisyonlu, 5 Ayni Komisyonsuz)
+-- ✅ 3 Personel
+-- ✅ 15 Kişi (10 Gebze içi, 5 Gebze dışı)
+-- ✅ 10 Hesap Bilgisi (IBAN - Gebze içi kişiler için)
+--
+-- TOPLAM: 155 kayıt
+-- =========================================================================
+-- NOT: ID değerleri Hibernate tarafından otomatik oluşturulacak!
+-- SEQUENCE kullanımı YOK - Hibernate yönetecek!
 -- =========================================================================
 COMMIT;
