@@ -26,28 +26,41 @@ spring:
       file-size-threshold: 2KB
     
   datasource:
-    url: jdbc:mysql://localhost:3306/sais_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Europe/Istanbul
-    username: root
-    password: 12345
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    
+    url: jdbc:oracle:thin:@localhost:1521/orclpdb
+    username: SAIS_USER
+    password: Sais_PDB_123
+    driver-class-name: oracle.jdbc.OracleDriver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      pool-name: SaisHikariPool
+
   jpa:
     hibernate:
       ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
+        dialect: org.hibernate.dialect.OracleDialect
+        default_schema: SAIS_USER
+        globally_quoted_identifiers: false
         format_sql: true
         jdbc:
           charset: UTF-8
+    show-sql: true
     open-in-view: false
     defer-datasource-initialization: true  
   
   sql:
     init:
-      mode: always  
-      data-locations: classpath:database/master-data.sql  
-      continue-on-error: false  
+      mode: always
+      data-locations: classpath:database/master-data.sql
+      continue-on-error: true
       encoding: UTF-8
     
   web:
@@ -78,11 +91,12 @@ file:
 
 logging:
   level:
-    com.sais: INFO
-    org.hibernate.SQL: WARN
-    org.hibernate.type.descriptor.sql.BasicBinder: WARN
-    org.springframework: WARN
-    org.primefaces: WARN
+    com.sais: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.springframework: INFO
+    org.primefaces: INFO
+    org.springframework.jdbc.datasource.init: DEBUG
   pattern:
     console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
   charset:

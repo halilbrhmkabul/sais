@@ -14,7 +14,7 @@ import lombok.*;
 public class YardimDonemi extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(name = "ay_sayisi", nullable = false, unique = true)

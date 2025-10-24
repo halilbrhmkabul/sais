@@ -21,7 +21,7 @@ import java.time.LocalDate;
 public class Kisi extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(name = "tc_kimlik_no", nullable = false, unique = true, length = 11)

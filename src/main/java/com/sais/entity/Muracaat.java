@@ -23,7 +23,7 @@ import java.util.List;
 public class Muracaat extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(name = "muracaat_no", nullable = false, unique = true)
