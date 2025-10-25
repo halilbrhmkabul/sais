@@ -40,7 +40,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
@@ -49,7 +49,7 @@ spring:
         # Oracle Dialect
         dialect: org.hibernate.dialect.Oracle12cDialect
         default_schema: SAIS_USER
-        globally_quoted_identifiers: false
+        globally_quoted_identifiers: true
 
         # SQL Formatting
         format_sql: true
